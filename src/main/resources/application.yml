@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: scaffold
+  profiles:
+    active: test
+logging:
+  config: classpath:logback-spring.xml
