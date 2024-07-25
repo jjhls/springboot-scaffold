@@ -37,3 +37,4 @@ CONSOLE_LOG_PATTERN_IS_UNDEFINEDCONSOLE_LOG_PATTERN_IS_UNDEFINEDCONSOLE_LOG_PATT
 2024-07-25T13:43:57.242+08:00  INFO 23716 --- [scaffold] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 979 ms
 2024-07-25T13:43:58.112+08:00  INFO 23716 --- [scaffold] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
 2024-07-25T13:43:58.119+08:00  INFO 23716 --- [scaffold] [           main] com.thinktech.Application                : Started Application in 2.362 seconds (process running for 2.63)
+2024-07-25T14:25:56.399+08:00  INFO 23716 --- [scaffold] [ionShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
