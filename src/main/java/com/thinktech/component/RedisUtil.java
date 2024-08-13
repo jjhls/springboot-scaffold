@@ -1,6 +1,6 @@
 package com.thinktech.component;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisUtil {
 
-    @Autowired
+    @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
     /**
