@@ -72,6 +72,17 @@
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <!--集成redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--集成hutool工具-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.0</version>
+        </dependency>
 
     </dependencies>
 
