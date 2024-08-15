@@ -1,17 +1,13 @@
 package com.thinktech.component;
 
-import com.thinktech.common.ResultCode;
+import com.alibaba.fastjson.JSON;
 import com.thinktech.common.ResultResponse;
 import org.springframework.core.MethodParameter;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-
-import java.util.Objects;
 
 /**
  * @author hls
@@ -22,28 +18,30 @@ import java.util.Objects;
 public class GlobalResponseHandler implements ResponseBodyAdvice {
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
-        if(returnType.getMethod() == null){
-            return false;
-        }
-        if(returnType.getMethod().getAnnotation(ResponseBody.class)!=null){
-            return true;
-        }
-        return returnType.getMethod().getReturnType() == ResultResponse.class;
+        return true;
     }
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        ResponseBody responseBody = Objects.requireNonNull(returnType.getMethod()).getAnnotation(ResponseBody.class);
-        if(responseBody!=null || selectedContentType.equalsTypeAndSubtype(MediaType.APPLICATION_JSON)){
-            if(body instanceof ResultResponse<?> result){
-                if(!Objects.equals(result.getCode(), ResultCode.INTERNAL_SERVER_ERROR.getCode())){
-                    response.setStatusCode(HttpStatus.valueOf(result.getCode()));
-                }
-            }else{
-                return ResultResponse.success(body);
-            }
+        if (body instanceof ResultResponse<?>) {
+            return body;
+        }
+        // 如果是空，则返回成功
+        else if (body == null) {
+            return ResultResponse.success();
+        }
+        // 如果是异常类型就直接返回
+        else if (body instanceof Exception) {
+            return body;
+        }
+        // 如果是String类型则直接返回String类型
+        else if (body instanceof String) {
+            //转json
+            return JSON.toJSONString(ResultResponse.success(body));
+        }
+        // 返回封装后的数据
+        else {
             return ResultResponse.success(body);
         }
-        return body;
     }
 }
