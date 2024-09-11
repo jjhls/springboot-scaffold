@@ -25,7 +25,7 @@ public class RandImageUtil {
     /**
      * 定义图形大小
      */
-    private static final int HEIGHT = 35;
+    private static final int HEIGHT = 60;
 
     /**
      * 定义干扰线数量
@@ -121,7 +121,7 @@ public class RandImageUtil {
 //			graphics.setFont(new Font("Arial Black", Font.ITALIC, 18));
             graphics.setFont(new Font("Times New Roman", Font.BOLD, 24));
             // 设置字符，字符间距，上边距
-            graphics.drawString(String.valueOf(resultCode.charAt(i)), (23 * i) + 8, 26);
+            graphics.drawString(String.valueOf(resultCode.charAt(i)), (23 * i) + 8, 36);
         }
         // 图象生效
         graphics.dispose();

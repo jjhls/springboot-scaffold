@@ -22,7 +22,7 @@ public class CodeGenerator {
      * @Description: 代码生成
      */
     public static void main(String[] args) {
-        FastAutoGenerator.create("jdbc:mysql://127.0.0.1:3306/analysedata?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true", "root", "root")
+        FastAutoGenerator.create("jdbc:mysql://127.0.0.1:3306/batis?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true", "root", "root")
                 // 全局配置
                 .globalConfig((scanner, builder) -> builder.outputDir(System.getProperty("user.dir")+"/src/main/java")
                         .author(scanner.apply("请输入作者名称？")))
